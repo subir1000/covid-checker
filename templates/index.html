@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Covid-19</title>
+
+  <style>
+	select {
+	  width: 100%;
+	  padding: 12px 20px;
+	  margin: 8px 0;
+	  display: inline-block;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  box-sizing: border-box;
+	}
+	body { 
+		width: 100%;
+		height:100%;
+		font-family: 'Helvetica';
+		background: #458AEA;
+		color: #fff;
+		font-size: 24px;
+		text-align:center;
+		letter-spacing:1.4px;
+	
+	}
+	.login{
+		width: 50%;
+		margin-left: 25%;
+	}
+	.login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+
+
+
+	#predict1{
+		margin-bottom: 50px;
+	}
+	button{
+		background-color: blue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10%;
+	}
+	button:hover{
+		background-color: green;
+	}
+  </style>
+</head>
+
+<body style="background-image: url('https://wallpaperaccess.com/full/2348499.png'); background-size: cover; background-repeat: none;">
+ <div class="login" style="top: 20%;">
+	<h1>Covid-19 Predictor </h1>
+	
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+		<label for="Trip">Have Fever:</label>
+		<select name="Trip" id="Trip" required>
+		  <option value="1">Yes</option>
+		  <option value="0">No</option>
+		</select><br>
+		
+		<label for="Fever">Dry Cough:</label>
+		<select name="Fever" id="Fever" required>
+		  <option value="1">Yes</option>
+		  <option value="0">No</option>
+		</select><br>
+		
+		<label for="Itchy Eyes">Tiredness:</label>
+		<select name="Itchy Eyes" id="Itchy Eyes" required>
+		  <option value="1">Yes</option>
+		  <option value="0">No</option>
+		</select><br>
+		
+		<label for="Runny Nose">Diarrhoea:</label>
+		<select name="Runny Nose" id="Runny Nose" required>
+		  <option value="1">Yes</option>
+		  <option value="0">No</option>
+		</select><br>
+		
+		<label for="Trouble Breathing">Headache</label>
+		<select name="Trouble Breathing" id="Trouble Breathing" required>
+		  <option value="1">Yes</option>
+		  <option value="0">No</option>
+		</select><br>
+		
+		<label for="taste">Loss of Taste or Smell:</label>
+		<select name="taste" id="Trip" required>
+		  <option value="1">Yes</option>
+		  <option value="0">No</option>
+		</select><br>
+		
+		<label for="throat">Sore Throat:</label>
+		<select name="throat" id="throat" required>
+		  <option value="1">Yes</option>
+		  <option value="0">No</option>
+		</select><br>
+		
+		<label for="Chest">Chest pain:</label>
+		<select name="Chest" id="throat" required>
+		  <option value="1">Yes</option>
+		  <option value="0">No</option>
+		</select>
+    	<!--<input type="text" name="Trip" placeholder="Fever (Type 1 if yes or 0 if No) " required="required" />
+        <input type="text" name="Fever" placeholder="Dry Cough (Type 1 if yes or 0 if No) " required="required" />
+        <input type="text" name="Itchy Eyes" placeholder="Tiredness (Type 1 if yes or 0 if No) " required="required" />
+        <input type="text" name="Runny Nose" placeholder="Diarrhoea (Type 1 if yes or 0 if No) " required="required" />
+        <input type="text" name="Trouble Breathing" placeholder="Headache (Type 1 if yes or 0 if No) " required="required" />
+        <input type="text" name="taste" placeholder="Loss of taste or smell (Type 1 if yes or 0 if No)" required="required" />
+		<input type="text" name="throat" placeholder="Sore Throat (Type 1 if yes or 0 if No)" required="required" />
+		<input type="text" name="Chest" placeholder="Chest pain (Type 1 if yes or 0 if No)" required="required" />-->
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict Disease</button>
+    </form>
+
+   <br>
+   <br>
+   <div id="predict1">
+    {{ prediction_text }}
+   </div>
+   <br>
+   <br>
+   <br>
+
+ </div>
+
+
+</body>
+</html>
